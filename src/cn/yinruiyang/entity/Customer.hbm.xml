@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+        
+        <hibernate-mapping>
+    <!-- 配置类和表对应
+    class标签
+    name：实体类的全路径
+    table：数据表名称，可以随意起名 -->
+<class name="cn.yinruiyang.entity.Customer" table="customer">
+<!-- 配置实体类id和表id对应
+name:实体类中id的属性名称
+column:生成的表中的主键字段的名称 -->
+<id name="cid" column="conid">
+<!-- 设置数据库表中id的增长策略 
+native设置表中主键值自动生长-->
+<generator class="native"></generator>
+</id>
+<!-- 配置其他属性和表的字段相对应 
+name:实体类中属性名称
+column:表中字段名称-->
+<property name="custName" column="custName"></property>
+<property name="custLevel" column="custLevel"></property>
+<property name="custSource" column="custSource"></property>
+<property name="custPhone" column="custPhone"></property>
+<property name="custMobile" column="custMobile"></property>
+
+<!-- 在客户映射文件中，表示所有联系人
+使用set标签表示
+set中的name属性：客户实体类中表示联系人的set的名称 -->
+<set name="set" cascade="save-update,delete">
+<!-- 一对多建表，需要有外键，
+hibernate的机制是双向维护外键，
+也就是说在两个表都设置外键
+其中column属性是外键的名称 -->
+<key column="cucoid"></key>
+<!-- 最后需要连接到另一个表，class中是另一个实体类的路径 -->
+<one-to-many class="cn.yinruiyang.entity.Contacts"/>
+</set>
+
+</class> 
+</hibernate-mapping>
+        

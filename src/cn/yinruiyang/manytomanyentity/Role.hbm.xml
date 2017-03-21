@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+        
+        <hibernate-mapping>
+    <!-- 配置类和表对应
+    class标签
+    name：实体类的全路径
+    table：数据表名称，可以随意起名 -->
+<class name="cn.yinruiyang.manytomanyentity.Role" table="role">
+<!-- 配置实体类id和表id对应
+name:实体类中id的属性名称
+column:生成的表中的主键字段的名称 -->
+<id name="role_id" column="roleid">
+<!-- 设置数据库表中id的增长策略 
+native设置表中主键值自动生长-->
+<generator class="native"></generator>
+</id>
+<!-- 配置其他属性和表的字段相对应 
+name:实体类中属性名称
+column:表中字段名称-->
+<property name="role_name" column="roleName"></property>
+<property name="role_memo" column="roleMemo"></property>
+
+<!--name：此映射文件对应的实体类中set的名称  -->
+<!--table：中间表的表名  -->
+<set name="setUser" table="user_role" cascade="save-update">
+<!--column：此表在中间表中的外键名  -->
+<key column="roleid"></key>
+<!-- class：与此表相关联的另一张表的全路径 -->
+<!-- column: 与此表相关联的另一张表在中间表的外键-->
+<many-to-many class="cn.yinruiyang.manytomanyentity.User" column="userid"></many-to-many>
+</set>
+
+</class> 
+</hibernate-mapping>
+        

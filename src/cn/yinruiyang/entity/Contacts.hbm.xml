@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+        
+        <hibernate-mapping>
+    <!-- 配置类和表对应
+    class标签
+    name：实体类的全路径
+    table：数据表名称，可以随意起名 -->
+<class name="cn.yinruiyang.entity.Contacts" table="contacts">
+<!-- 配置实体类id和表id对应
+name:实体类中id的属性名称
+column:生成的表中的主键字段的名称 -->
+<id name="conid" column="conid">
+<!-- 设置数据库表中id的增长策略 
+native设置表中主键值自动生长-->
+<generator class="native"></generator>
+</id>
+<!-- 配置其他属性和表的字段相对应 
+name:实体类中属性名称
+column:表中字段名称-->
+<property name="conName" column="conName"></property>
+<property name="conGender" column="conGender"></property>
+<property name="conPhone" column="conPhone"></property>
+
+<!-- 在联系人中表示他所属的客户
+由于是一个联系人只对应一个客户，所以直接用manytoone标签
+name是实体类中代表客户的名称
+class是与之连接的客户实体类的全路径
+column是外键名称，与customer映射文件中必须相同 -->
+<many-to-one name="customer" class="cn.yinruiyang.entity.Customer" column="cucoid"></many-to-one>
+
+</class> 
+</hibernate-mapping>
+        
