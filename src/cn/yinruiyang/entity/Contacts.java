@@ -6,7 +6,7 @@ public class Contacts {
 	private String conName;
 	private String conGender;
 	private String conPhone;
-	
+	//fs
 //	一个联系人只对应一个客户
 	private Customer customer;
 	
