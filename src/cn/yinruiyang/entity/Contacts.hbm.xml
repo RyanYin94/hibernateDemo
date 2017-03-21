@@ -23,7 +23,7 @@ column:表中字段名称-->
 <property name="conName" column="conName"></property>
 <property name="conGender" column="conGender"></property>
 <property name="conPhone" column="conPhone"></property>
-
+<!-- test github -->
 <!-- 在联系人中表示他所属的客户
 由于是一个联系人只对应一个客户，所以直接用manytoone标签
 name是实体类中代表客户的名称

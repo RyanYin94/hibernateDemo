@@ -10,7 +10,7 @@ public class Customer {
 	private String custSource;
 	private String custPhone;
 	private String custMobile;
-	
+	//test github
 //	一个客户对应多个联系人，
 //	hibernate中使用set集合表示多的数据，因为set有数据唯一性的特点
 	private Set<Contacts> set = new HashSet<Contacts>();
